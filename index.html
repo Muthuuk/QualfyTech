@@ -3,547 +3,1027 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QualfyTech | Professional Certification Programs</title>
+    <title>Master Blockchain Engineering, AI Ethics & Generative AI</title>
+    <meta name="description" content="Professional certification programs in Blockchain Engineering, AI Ethics by Design, and Generative AI for All. Based on Springer textbooks by Prof. Muthu Ramachandran.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0a0a0a;
-            --accent: #00ff88;
-            --accent-dim: #00cc6a;
-            --secondary: #7c3aed;
-            --tertiary: #06b6d4;
-            --text: #f8fafc;
-            --text-dim: #94a3b8;
-            --surface: #18181b;
-            --surface-light: #27272a;
-            --gradient-1: linear-gradient(135deg, #00ff88 0%, #06b6d4 50%, #7c3aed 100%);
-            --ai-accent: #818cf8;
-            --ai-gradient: linear-gradient(135deg, #818cf8 0%, #f472b6 50%, #34d399 100%);
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --primary-light: #dbeafe;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --accent-light: #cffafe;
+            --text: #334155;
+            --text-light: #64748b;
+            --text-dark: #0f172a;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --gradient: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --radius: 12px;
+            --radius-sm: 8px;
+            --radius-lg: 16px;
+            /* Gen AI specific */
+            --genai: #8b5cf6;
+            --genai-dark: #6d28d9;
+            --genai-light: #ede9fe;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--primary); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        .bg-grid { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: linear-gradient(rgba(0,255,136,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,255,136,0.03) 1px, transparent 1px); background-size: 50px 50px; pointer-events: none; z-index: 0; }
-        .bg-glow { position: fixed; width: 600px; height: 600px; border-radius: 50%; filter: blur(150px); opacity: 0.15; pointer-events: none; z-index: 0; }
-        .bg-glow-1 { top: -200px; right: -200px; background: var(--accent); }
-        .bg-glow-2 { bottom: -200px; left: -200px; background: var(--secondary); }
-        
-        /* Navigation */
-        nav.main-nav { position: fixed; top: 0; width: 100%; padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: rgba(10,10,10,0.8); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .logo { font-family: 'Outfit', sans-serif; font-size: 1.85rem; font-weight: 800; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; cursor: pointer; text-decoration: none; }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
-        .nav-links a.active { color: var(--accent); }
-        .nav-cta { background: var(--accent); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; font-size: 0.9rem; }
-        .nav-cta:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,255,136,0.3); }
-        
-        /* Mobile Floating Nav */
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        .nav-container {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0.75rem 2rem;
+        }
+        .nav-logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem; font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-light);
+            font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .nav-cta {
+            background: var(--gradient); color: white !important;
+            padding: 0.5rem 1.25rem; border-radius: 8px;
+            font-weight: 600 !important; font-size: 0.85rem !important;
+            transition: transform 0.2s, box-shadow 0.2s !important;
+        }
+        .nav-cta:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+        /* Mobile nav */
         .mobile-nav { display: none; }
-        
-        /* Hero */
-        .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 5% 4rem; position: relative; z-index: 1; }
-        .hero-main { display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 1; }
-        .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,255,136,0.1); border: 1px solid rgba(0,255,136,0.3); padding: 0.5rem 1rem; border-radius: 50px; font-size: 0.85rem; color: var(--accent); margin-bottom: 2rem; }
-        .hero h1 { font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; max-width: 1000px; }
-        .hero h1 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero p { font-size: 1.25rem; color: var(--text-dim); max-width: 700px; margin-bottom: 2.5rem; }
-        .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-        .cta-btn { background: var(--accent); color: var(--primary); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s; border: none; cursor: pointer; font-size: 0.9rem; }
-        .cta-btn:hover { background: var(--accent-dim); transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,255,136,0.3); }
-        .btn-outline { background: transparent; color: var(--text); padding: 0.75rem 1.5rem; border-radius: 8px; font-weight: 600; text-decoration: none; border: 2px solid var(--surface-light); transition: all 0.3s; }
-        .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-        .hero-stats { display: flex; gap: 4rem; margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--surface-light); }
-        .stat { text-align: center; }
-        .stat-number { font-family: 'Space Mono', monospace; font-size: 2.5rem; font-weight: 700; color: var(--accent); }
-        .stat-label { font-size: 0.9rem; color: var(--text-dim); margin-top: 0.5rem; }
-        
-        .program-selector { padding: 4rem 5%; position: relative; z-index: 1; }
-        .program-tabs { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap; }
-        .program-tab { background: var(--surface); border: 2px solid var(--surface-light); color: var(--text-dim); padding: 1rem 2rem; border-radius: 12px; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; gap: 0.75rem; }
-        .program-tab:hover { border-color: var(--accent); color: var(--text); }
-        .program-tab.active { background: var(--accent); border-color: var(--accent); color: var(--primary); }
-        .program-tab.active.ai-ethics { background: var(--ai-accent); border-color: var(--ai-accent); }
-        .program-tab .tab-icon { font-size: 1.5rem; }
-        .program-content { display: none; }
-        .program-content.active { display: block; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
-        .section-header h2 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1rem; }
-        .section-header h2 span { background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .ai-ethics .section-header h2 span { background: var(--ai-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .section-header p { color: var(--text-dim); font-size: 1.1rem; }
-        .book-section { padding: 4rem 5%; position: relative; z-index: 1; }
-        .book-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; align-items: center; }
-        .book-cover-inner { background: var(--surface); border-radius: 16px; padding: 2rem; border: 1px solid var(--surface-light); position: relative; overflow: hidden; }
-        .book-cover-inner::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-1); }
-        .ai-ethics .book-cover-inner::before { background: var(--ai-gradient); }
-        .book-icon { font-size: 3rem; margin-bottom: 1rem; }
-        .book-title-display { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.3; }
-        .book-subtitle { color: var(--accent); font-size: 1rem; margin-bottom: 1.5rem; }
-        .ai-ethics .book-subtitle { color: var(--ai-accent); }
-        .book-meta { display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.9rem; color: var(--text-dim); }
-        .book-meta span { display: flex; align-items: center; gap: 0.5rem; }
-        .book-details h2 { font-family: 'Outfit', sans-serif; font-size: 2.5rem; margin-bottom: 1.5rem; }
-        .book-details p { color: var(--text-dim); margin-bottom: 2rem; font-size: 1.1rem; }
-        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-        .feature-item { background: var(--surface); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--surface-light); transition: all 0.3s; }
-        .feature-item:hover { border-color: var(--accent); transform: translateY(-4px); }
-        .ai-ethics .feature-item:hover { border-color: var(--ai-accent); }
-        .feature-icon { width: 48px; height: 48px; background: rgba(0,255,136,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; }
-        .ai-ethics .feature-icon { background: rgba(129,140,248,0.1); }
-        .feature-item h4 { font-size: 1rem; margin-bottom: 0.5rem; }
-        .feature-item p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 0; }
-        .chapters-section { padding: 6rem 5%; position: relative; z-index: 1; }
-        .chapters-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr)); gap: 1.5rem; }
-        .chapter-card { background: var(--surface); border-radius: 16px; padding: 2rem; border: 1px solid var(--surface-light); transition: all 0.4s; position: relative; overflow: hidden; }
-        .chapter-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gradient-1); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
-        .ai-ethics .chapter-card::before { background: var(--ai-gradient); }
-        .chapter-card:hover { transform: translateY(-8px); border-color: rgba(0,255,136,0.3); box-shadow: 0 20px 60px rgba(0,255,136,0.1); }
-        .ai-ethics .chapter-card:hover { border-color: rgba(129,140,248,0.3); box-shadow: 0 20px 60px rgba(129,140,248,0.1); }
-        .chapter-card:hover::before { transform: scaleX(1); }
-        .chapter-number { font-family: 'Space Mono', monospace; font-size: 0.75rem; color: var(--accent); background: rgba(0,255,136,0.1); padding: 0.25rem 0.75rem; border-radius: 20px; display: inline-block; margin-bottom: 1rem; }
-        .ai-ethics .chapter-number { color: var(--ai-accent); background: rgba(129,140,248,0.1); }
-        .chapter-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; margin-bottom: 0.75rem; line-height: 1.4; }
-        .chapter-card > p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 1.5rem; line-height: 1.6; }
-        .chapter-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .topic-tag { font-size: 0.75rem; padding: 0.25rem 0.75rem; background: var(--surface-light); border-radius: 20px; color: var(--text-dim); }
-        .chapter-footer { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--surface-light); }
-        .chapter-duration { font-size: 0.85rem; color: var(--text-dim); }
-        .chapter-btn { font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: 600; }
-        .ai-ethics .chapter-btn { color: var(--ai-accent); }
-        .part-header { grid-column: 1 / -1; background: linear-gradient(135deg, var(--surface) 0%, var(--surface-light) 100%); border-radius: 16px; padding: 2rem; margin-top: 2rem; border-left: 4px solid var(--accent); }
-        .ai-ethics .part-header { border-left-color: var(--ai-accent); }
-        .part-header:first-child { margin-top: 0; }
-        .part-header h3 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .part-header p { color: var(--text-dim); font-size: 0.95rem; }
-        .certification-section { padding: 6rem 5%; background: linear-gradient(180deg, transparent 0%, rgba(0,255,136,0.02) 100%); position: relative; z-index: 1; }
-        .ai-ethics .certification-section { background: linear-gradient(180deg, transparent 0%, rgba(129,140,248,0.02) 100%); }
-        .cert-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .cert-card { background: var(--surface); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--surface-light); position: relative; overflow: hidden; transition: all 0.4s; }
-        .cert-card.featured { border-color: var(--accent); transform: scale(1.05); }
-        .ai-ethics .cert-card.featured { border-color: var(--ai-accent); }
-        .cert-card.featured::before { content: 'MOST POPULAR'; position: absolute; top: 20px; right: -35px; background: var(--accent); color: var(--primary); padding: 0.25rem 3rem; font-size: 0.7rem; font-weight: 700; transform: rotate(45deg); }
-        .ai-ethics .cert-card.featured::before { background: var(--ai-accent); }
-        .cert-card:hover { transform: translateY(-10px); box-shadow: 0 30px 80px rgba(0,0,0,0.3); }
-        .cert-card.featured:hover { transform: scale(1.05) translateY(-10px); }
-        .cert-level { font-size: 0.85rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
-        .ai-ethics .cert-level { color: var(--ai-accent); }
-        .cert-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.75rem; margin-bottom: 1rem; }
-        .cert-price { font-size: 2.5rem; font-weight: 700; margin-bottom: 1.5rem; }
-        .cert-price span { font-size: 1rem; color: var(--text-dim); font-weight: 400; }
-        .cert-features { list-style: none; margin-bottom: 2rem; }
-        .cert-features li { padding: 0.75rem 0; border-bottom: 1px solid var(--surface-light); display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; color: var(--text-dim); }
-        .cert-features li::before { content: '✓'; color: var(--accent); font-weight: 700; }
-        .ai-ethics .cert-features li::before { color: var(--ai-accent); }
-        .cert-btn { width: 100%; padding: 1rem; border-radius: 10px; font-weight: 600; text-align: center; text-decoration: none; display: block; transition: all 0.3s; }
-        .cert-btn.primary { background: var(--accent); color: var(--primary); }
-        .ai-ethics .cert-btn.primary { background: var(--ai-accent); }
-        .cert-btn.secondary { background: transparent; color: var(--text); border: 2px solid var(--surface-light); }
-        .cert-btn:hover { transform: translateY(-2px); }
-        .path-section { padding: 6rem 5%; position: relative; z-index: 1; }
-        .path-container { max-width: 1000px; margin: 0 auto; }
-        .path-item { display: flex; gap: 3rem; margin-bottom: 3rem; position: relative; }
-        .path-item::before { content: ''; position: absolute; left: 30px; top: 60px; bottom: -30px; width: 2px; background: var(--surface-light); }
-        .path-item:last-child::before { display: none; }
-        .path-number { width: 60px; height: 60px; background: var(--surface); border: 2px solid var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Space Mono', monospace; font-size: 1.25rem; font-weight: 700; color: var(--accent); flex-shrink: 0; position: relative; z-index: 1; }
-        .ai-ethics .path-number { border-color: var(--ai-accent); color: var(--ai-accent); }
-        .path-content { background: var(--surface); border-radius: 16px; padding: 2rem; border: 1px solid var(--surface-light); flex-grow: 1; }
-        .path-content h4 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 0.75rem; }
-        .path-content p { color: var(--text-dim); margin-bottom: 1rem; }
-        .path-chapters { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-        .path-chapters span { font-size: 0.8rem; padding: 0.25rem 0.75rem; background: rgba(0,255,136,0.1); border-radius: 20px; color: var(--accent); }
-        .ai-ethics .path-chapters span { background: rgba(129,140,248,0.1); color: var(--ai-accent); }
-        .author-section { padding: 6rem 5%; background: var(--surface); position: relative; z-index: 1; }
-        .author-container { max-width: 1000px; margin: 0 auto; display: flex; gap: 4rem; align-items: center; }
-        .author-image { width: 250px; height: 250px; border-radius: 20px; background: var(--gradient-1); padding: 4px; flex-shrink: 0; }
-        .author-photo { width: 100%; height: 100%; object-fit: cover; border-radius: 18px; }
-        .author-info h3 { font-family: 'Outfit', sans-serif; font-size: 2rem; margin-bottom: 0.5rem; }
-        .author-title { color: var(--accent); font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .author-info p { color: var(--text-dim); margin-bottom: 1.5rem; line-height: 1.8; }
-        .author-credentials { display: flex; flex-wrap: wrap; gap: 1rem; }
-        .credential { background: var(--primary); padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.85rem; color: var(--text-dim); }
-        .faq-section { padding: 6rem 5%; position: relative; z-index: 1; }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--surface); border-radius: 12px; margin-bottom: 1rem; border: 1px solid var(--surface-light); overflow: hidden; }
-        .faq-question { width: 100%; padding: 1.5rem; background: none; border: none; color: var(--text); font-size: 1rem; font-weight: 600; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s; font-family: inherit; }
-        .faq-question:hover { background: var(--surface-light); }
-        .faq-question::after { content: '+'; font-size: 1.5rem; color: var(--accent); transition: transform 0.3s; }
-        .faq-item.active .faq-question::after { transform: rotate(45deg); }
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
-        .faq-item.active .faq-answer { max-height: 500px; }
-        .faq-answer p { padding: 0 1.5rem 1.5rem; color: var(--text-dim); line-height: 1.8; }
-        .cta-section { padding: 8rem 5%; text-align: center; position: relative; z-index: 1; }
-        .cta-content { max-width: 700px; margin: 0 auto; }
-        .cta-content h2 { font-family: 'Outfit', sans-serif; font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem; }
-        .cta-content p { color: var(--text-dim); font-size: 1.1rem; margin-bottom: 2rem; }
-        footer { background: var(--surface); padding: 4rem 5% 2rem; position: relative; z-index: 1; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
-        .footer-brand h4 { font-family: 'Outfit', sans-serif; font-size: 1.5rem; margin-bottom: 1rem; background: var(--gradient-1); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .footer-brand p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; }
-        .footer-links h5 { font-size: 1rem; margin-bottom: 1.5rem; color: var(--text); }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
-        .footer-links a:hover { color: var(--accent); }
-        .footer-bottom { padding-top: 2rem; border-top: 1px solid var(--surface-light); display: flex; justify-content: space-between; align-items: center; color: var(--text-dim); font-size: 0.85rem; }
-        
-        /* Tablet */
-        @media (max-width: 1024px) {
-            .cert-grid { grid-template-columns: 1fr; max-width: 500px; }
-            .cert-card.featured { transform: none; }
-            .cert-card.featured:hover { transform: translateY(-10px); }
-            .book-container { grid-template-columns: 1fr; }
-            .author-container { flex-direction: column; text-align: center; }
-            .footer-content { grid-template-columns: 1fr 1fr; }
+        .mobile-nav-toggle { display: none; cursor: pointer; padding: 0.5rem; }
+        .hamburger { width: 24px; height: 2px; background: var(--secondary); position: relative; transition: 0.3s; }
+        .hamburger::before, .hamburger::after {
+            content: ''; position: absolute; width: 24px; height: 2px;
+            background: var(--secondary); transition: 0.3s;
         }
-        
-        /* Mobile */
+        .hamburger::before { top: -7px; }
+        .hamburger::after { top: 7px; }
+
         @media (max-width: 768px) {
-            /* Top nav adjustments */
-            nav.main-nav { padding: 0.6rem 3%; }
-            nav.main-nav .logo { font-size: 1.15rem; }
-            nav.main-nav .nav-cta { padding: 0.4rem 0.7rem; font-size: 0.65rem; white-space: nowrap; }
             .nav-links { display: none; }
-            
-            /* Show mobile nav */
+            .mobile-nav-toggle { display: block; }
             .mobile-nav {
-                display: flex;
-                position: fixed;
-                bottom: 20px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: rgba(24,24,27,0.95);
+                position: fixed; top: 60px; left: 0; right: 0;
+                background: rgba(255,255,255,0.98);
                 backdrop-filter: blur(20px);
-                border-radius: 100px;
-                padding: 0.6rem 1rem;
-                z-index: 1001;
-                border: 1px solid rgba(255,255,255,0.1);
-                box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+                border-bottom: 1px solid var(--border);
+                padding: 1rem 2rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                pointer-events: none;
             }
-            .mobile-nav-links {
-                display: flex;
-                gap: 0.75rem;
-                list-style: none;
-                margin: 0;
-                padding: 0;
+            .mobile-nav.active {
+                display: flex; flex-direction: column; gap: 1rem;
+                transform: translateY(0); opacity: 1;
+                pointer-events: all;
             }
-            .mobile-nav-links li a {
-                color: var(--text-dim);
-                text-decoration: none;
-                font-size: 1.1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 0.15rem;
-                padding: 0.3rem 0.5rem;
-                border-radius: 8px;
-                transition: all 0.3s;
+            .mobile-nav a {
+                text-decoration: none; color: var(--text);
+                font-weight: 500; padding: 0.5rem 0;
+                display: flex; align-items: center; gap: 0.5rem;
             }
-            .mobile-nav-links li a span.nav-label {
-                font-size: 0.5rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.3px;
-            }
-            .mobile-nav-links li a:hover,
-            .mobile-nav-links li a:active {
-                color: var(--accent);
-                background: rgba(0,255,136,0.1);
-            }
-            .mobile-nav-links li a.active {
-                color: var(--accent);
-                background: rgba(0,255,136,0.15);
-            }
-            
-            /* Hero - fill viewport without stats showing */
-            .hero {
-                min-height: 100vh;
-                min-height: 100dvh;
-                padding: 4rem 5% 2rem;
-                justify-content: center;
-                align-items: center;
-            }
-            .hero-main {
-                flex: none;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
-            .hero-badge { font-size: 0.6rem; padding: 0.3rem 0.6rem; margin-bottom: 1rem; }
-            .hero h1 { font-size: 1.75rem; line-height: 1.2; margin-bottom: 0.75rem; padding: 0 0.5rem; }
-            .hero p { font-size: 0.85rem; margin-bottom: 1.25rem; padding: 0 0.5rem; line-height: 1.5; }
-            .hero-buttons { flex-direction: column; width: 100%; max-width: 240px; gap: 0.5rem; }
-            .hero-buttons .cta-btn,
-            .hero-buttons .btn-outline { width: 100%; text-align: center; padding: 0.7rem 1rem; font-size: 0.85rem; }
-            
-            /* Hide stats completely */
-            .hero-stats { display: none !important; }
-            
-            /* Other mobile adjustments */
-            .program-tabs { flex-direction: column; padding: 0 1rem; }
-            .features-grid { grid-template-columns: 1fr; }
-            .chapters-grid { grid-template-columns: 1fr; }
-            .path-item { flex-direction: column; gap: 1rem; }
-            .path-item::before { display: none; }
-            .footer-content { grid-template-columns: 1fr; gap: 2rem; }
-            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-            
-            /* Add bottom padding for mobile nav */
-            footer { padding-bottom: 6rem; }
         }
-        
-        /* Small phones */
-        @media (max-width: 400px) {
-            nav.main-nav .logo { font-size: 1rem; }
-            nav.main-nav .nav-cta { padding: 0.35rem 0.5rem; font-size: 0.6rem; }
-            .hero h1 { font-size: 1.5rem; }
-            .hero p { font-size: 0.8rem; }
-            .mobile-nav { padding: 0.5rem 0.75rem; bottom: 15px; }
-            .mobile-nav-links { gap: 0.5rem; }
-            .mobile-nav-links li a { font-size: 1rem; padding: 0.25rem 0.4rem; }
-            .mobile-nav-links li a span.nav-label { font-size: 0.45rem; }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            position: relative; overflow: hidden; text-align: center;
         }
-        
-        /* Resources Carousel Section */
-        .resources-section { padding: 6rem 5%; position: relative; z-index: 1; background: linear-gradient(180deg, var(--surface) 0%, var(--primary) 100%); }
-        .resources-carousel-wrapper { max-width: 1400px; margin: 0 auto; position: relative; }
-        .resources-carousel-container { position: relative; overflow: hidden; }
-        .resources-carousel { display: flex; gap: 2rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 1rem 0 2rem; scroll-behavior: smooth; }
-        .resources-carousel::-webkit-scrollbar { display: none; }
-        .resource-card { flex: 0 0 calc(33.333% - 1.34rem); min-width: 300px; scroll-snap-align: start; background: var(--primary); border-radius: 20px; border: 1px solid var(--surface-light); overflow: hidden; transition: all 0.4s; display: flex; flex-direction: column; }
-        .resource-card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 20px 60px rgba(0,255,136,0.15); }
-        .resource-card.udemy:hover { border-color: #a435f0; box-shadow: 0 20px 60px rgba(164,53,240,0.15); }
-        .resource-card-image { height: 200px; background: var(--surface); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-        .resource-card-image::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-1); }
-        .resource-card.udemy .resource-card-image::before { background: linear-gradient(135deg, #a435f0 0%, #e91e63 100%); }
-        .resource-card-image .book-icon-large { font-size: 5rem; }
-        .resource-badge { position: absolute; top: 1rem; right: 1rem; padding: 0.4rem 0.8rem; border-radius: 20px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .resource-badge.springer { background: rgba(0,255,136,0.2); color: var(--accent); }
-        .resource-badge.udemy { background: rgba(164,53,240,0.2); color: #a435f0; }
-        .resource-badge.coming-soon { background: rgba(251,191,36,0.2); color: #fbbf24; }
-        .resource-card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-        .resource-type { font-size: 0.75rem; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
-        .resource-card.udemy .resource-type { color: #a435f0; }
-        .resource-card-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; margin-bottom: 0.75rem; line-height: 1.3; }
-        .resource-card-content p { font-size: 0.9rem; color: var(--text-dim); line-height: 1.6; margin-bottom: 1rem; flex: 1; }
-        .resource-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
-        .resource-meta span { font-size: 0.75rem; padding: 0.25rem 0.6rem; background: var(--surface); border-radius: 20px; color: var(--text-dim); }
-        .resource-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.85rem 1.5rem; border-radius: 10px; font-weight: 600; text-decoration: none; transition: all 0.3s; font-size: 0.9rem; }
-        .resource-btn.springer-btn { background: var(--accent); color: var(--primary); }
-        .resource-btn.springer-btn:hover { background: var(--accent-dim); transform: translateY(-2px); }
-        .resource-btn.udemy-btn { background: #a435f0; color: white; }
-        .resource-btn.udemy-btn:hover { background: #8710d8; transform: translateY(-2px); }
-        .resource-btn.coming-soon-btn { background: var(--surface-light); color: var(--text-dim); cursor: not-allowed; }
-        
-        /* Scroll indicators */
-        .scroll-indicator { position: absolute; top: 50%; transform: translateY(-50%); width: 50px; height: 50px; border-radius: 50%; background: rgba(24,24,27,0.95); border: 1px solid var(--surface-light); color: var(--text); font-size: 1.5rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; z-index: 10; backdrop-filter: blur(10px); line-height: 1; text-align: center; padding: 0; }
-        .scroll-indicator:hover { background: var(--accent); color: var(--primary); border-color: var(--accent); }
-        .scroll-indicator.left { left: -25px; }
-        .scroll-indicator.right { right: -25px; }
-        .scroll-indicator.hidden { opacity: 0; pointer-events: none; }
-        
-        .carousel-dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1rem; }
-        .carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--surface-light); border: none; cursor: pointer; transition: all 0.3s; }
-        .carousel-dot.active { background: var(--accent); width: 30px; border-radius: 5px; }
-        
-        @media (max-width: 1200px) {
-            .resource-card { flex: 0 0 calc(50% - 1rem); min-width: 280px; }
-            .scroll-indicator.left { left: 10px; }
-            .scroll-indicator.right { right: 10px; }
+        .hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(37,99,235,0.15) 0%, transparent 70%),
+                        radial-gradient(ellipse at 70% 50%, rgba(6,182,212,0.1) 0%, transparent 70%);
         }
+        .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-block; padding: 0.4rem 1rem;
+            background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.3);
+            border-radius: 999px; color: #93c5fd;
+            font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem; font-weight: 700; color: white;
+            line-height: 1.1; margin-bottom: 1.25rem;
+        }
+        .hero p { font-size: 1.15rem; color: #94a3b8; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .hero-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.75rem 1.75rem; border-radius: 10px;
+            font-weight: 600; font-size: 0.95rem;
+            text-decoration: none; transition: all 0.2s;
+            cursor: pointer; border: none;
+        }
+        .btn-primary { background: var(--gradient); color: white; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.3); }
+        .btn-outline { border: 1px solid rgba(255,255,255,0.2); color: white; background: transparent; }
+        .btn-outline:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+        .hero-stats {
+            display: flex; justify-content: center; gap: 3rem;
+            margin-top: 3rem; padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem; font-weight: 700; color: white;
+        }
+        .hero-stat-label { font-size: 0.85rem; color: #64748b; }
+
         @media (max-width: 768px) {
-            .resources-section { padding: 4rem 3%; }
-            .resource-card { flex: 0 0 100%; min-width: unset; }
-            .resource-card-image { height: 160px; }
-            .resource-card-image .book-icon-large { font-size: 4rem; }
-            .resource-card-content { padding: 1.25rem; }
-            .resource-card-content h3 { font-size: 1.1rem; }
-            .scroll-indicator { width: 36px; height: 36px; font-size: 1rem; }
-            .scroll-indicator.left { left: 8px; }
-            .scroll-indicator.right { right: 8px; }
+            .hero h1 { font-size: 2.25rem; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
         }
-        @media (max-width: 400px) {
-            .resource-card-image { height: 140px; }
-            .resource-card-content h3 { font-size: 1rem; }
-            .resource-card-content p { font-size: 0.85rem; }
+
+        /* ===== SECTIONS ===== */
+        section { padding: 5rem 2rem; }
+        .section-container { max-width: 1200px; margin: 0 auto; }
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.25rem; font-weight: 700; color: var(--text-dark);
+            text-align: center; margin-bottom: 0.75rem;
+        }
+        .section-subtitle {
+            text-align: center; color: var(--text-light);
+            font-size: 1.05rem; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+
+        /* ===== PROGRAM TABS ===== */
+        .program-tabs {
+            display: flex; justify-content: center; gap: 0.75rem;
+            margin-bottom: 3rem; flex-wrap: wrap;
+        }
+        .program-tab {
+            padding: 0.65rem 1.5rem; border-radius: 999px;
+            border: 2px solid var(--border); background: white;
+            font-weight: 600; font-size: 0.9rem; cursor: pointer;
+            transition: all 0.3s; color: var(--text);
+        }
+        .program-tab:hover { border-color: var(--primary); color: var(--primary); }
+        .program-tab.active {
+            background: var(--primary); border-color: var(--primary);
+            color: white;
+        }
+        .program-tab.active-ethics {
+            background: var(--accent); border-color: var(--accent); color: white;
+        }
+        .program-tab.active-genai {
+            background: var(--genai); border-color: var(--genai); color: white;
+        }
+
+        .program-content { display: none; }
+        .program-content.active { display: block; animation: fadeIn 0.4s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* ===== PROGRAM HEADER ===== */
+        .program-header {
+            text-align: center; padding: 3rem 2rem;
+            background: var(--bg-alt); border-radius: var(--radius-lg);
+            margin-bottom: 3rem; border: 1px solid var(--border);
+        }
+        .program-header .emoji { font-size: 3rem; margin-bottom: 1rem; }
+        .program-header h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.75rem; font-weight: 700; color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .program-header p { color: var(--text-light); font-size: 1rem; margin-bottom: 0.5rem; }
+        .program-meta {
+            display: flex; justify-content: center; gap: 1.5rem;
+            flex-wrap: wrap; margin-top: 1rem; font-size: 0.85rem; color: var(--text-light);
+        }
+
+        /* ===== FEATURE GRID ===== */
+        .feature-intro { text-align: center; margin-bottom: 2rem; }
+        .feature-intro h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem; font-weight: 700; color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .feature-intro p { color: var(--text-light); max-width: 600px; margin: 0 auto; }
+        .feature-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem; margin-bottom: 3rem;
+        }
+        .feature-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.5rem;
+            text-align: center; transition: all 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .feature-card .icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .feature-card h4 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; }
+        .feature-card p { font-size: 0.85rem; color: var(--text-light); }
+
+        /* ===== CURRICULUM ===== */
+        .curriculum-section h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem; font-weight: 700; color: var(--text-dark);
+            text-align: center; margin-bottom: 0.5rem;
+        }
+        .curriculum-section > p { text-align: center; color: var(--text-light); margin-bottom: 2rem; }
+        .part-group { margin-bottom: 2rem; }
+        .part-header {
+            display: flex; align-items: center; gap: 1rem;
+            margin-bottom: 1rem; padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+        .part-header h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.1rem; font-weight: 700; color: var(--text-dark);
+        }
+        .part-header p { font-size: 0.85rem; color: var(--text-light); }
+        .chapter-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+        .chapter-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem;
+            transition: all 0.3s;
+        }
+        .chapter-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .chapter-num {
+            display: inline-block; padding: 0.2rem 0.6rem;
+            background: var(--primary-light); color: var(--primary);
+            border-radius: 6px; font-size: 0.75rem; font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .chapter-num.ethics { background: var(--accent-light); color: #0e7490; }
+        .chapter-num.genai { background: var(--genai-light); color: var(--genai-dark); }
+        .chapter-card h5 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .chapter-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.75rem; }
+        .chapter-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .tag {
+            padding: 0.15rem 0.5rem; background: var(--bg-alt);
+            border-radius: 4px; font-size: 0.72rem; color: var(--text-light);
+            font-weight: 500;
+        }
+        .chapter-footer {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border);
+        }
+        .chapter-footer span { font-size: 0.8rem; color: var(--text-light); }
+        .chapter-footer a {
+            font-size: 0.8rem; color: var(--primary); text-decoration: none;
+            font-weight: 600; transition: color 0.2s;
+        }
+        .chapter-footer a:hover { color: var(--primary-dark); }
+
+        /* ===== CERTIFICATION TIERS ===== */
+        .cert-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem; font-weight: 700; color: var(--text-dark);
+            text-align: center; margin-bottom: 0.5rem;
+        }
+        .cert-subtitle { text-align: center; color: var(--text-light); margin-bottom: 2rem; }
+        .cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .cert-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2rem;
+            text-align: center; transition: all 0.3s; position: relative;
+        }
+        .cert-card:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
+        .cert-card.featured {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1px var(--primary), var(--shadow-lg);
+        }
+        .cert-card.featured-ethics { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--shadow-lg); }
+        .cert-card.featured-genai { border-color: var(--genai); box-shadow: 0 0 0 1px var(--genai), var(--shadow-lg); }
+        .cert-badge {
+            display: inline-block; padding: 0.2rem 0.75rem;
+            border-radius: 999px; font-size: 0.75rem; font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .cert-badge.foundation { background: #dbeafe; color: #1e40af; }
+        .cert-badge.professional { background: #fef3c7; color: #92400e; }
+        .cert-badge.expert { background: #d1fae5; color: #065f46; }
+        .cert-card h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem; font-weight: 700; color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        .cert-price {
+            font-size: 2rem; font-weight: 800; color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        .cert-price-note { font-size: 0.8rem; color: var(--text-light); margin-bottom: 1.25rem; }
+        .cert-features { list-style: none; text-align: left; margin-bottom: 1.5rem; }
+        .cert-features li {
+            padding: 0.4rem 0; font-size: 0.9rem; color: var(--text);
+            display: flex; align-items: flex-start; gap: 0.5rem;
+        }
+        .cert-features li::before { content: '✓'; color: var(--success); font-weight: 700; flex-shrink: 0; }
+        .cert-btn {
+            display: block; width: 100%; padding: 0.75rem;
+            border-radius: 10px; font-weight: 600; font-size: 0.9rem;
+            text-decoration: none; transition: all 0.2s; text-align: center;
+        }
+        .cert-btn-primary { background: var(--gradient); color: white; }
+        .cert-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(37,99,235,0.3); }
+        .cert-btn-outline { border: 2px solid var(--border); color: var(--text-dark); background: white; }
+        .cert-btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+        .cert-btn-genai { background: linear-gradient(135deg, #8b5cf6, #06b6d4); color: white; }
+        .cert-btn-genai:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
+
+        /* ===== AUTHOR ===== */
+        #author { background: var(--bg-alt); }
+        .author-card {
+            display: flex; gap: 2.5rem; align-items: center;
+            max-width: 900px; margin: 0 auto;
+            background: white; padding: 2.5rem; border-radius: var(--radius-lg);
+            border: 1px solid var(--border); box-shadow: var(--shadow-md);
+        }
+        .author-image {
+            width: 180px; height: 180px; border-radius: 50%;
+            object-fit: cover; border: 4px solid var(--primary-light); flex-shrink: 0;
+        }
+        .author-info h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem; font-weight: 700; color: var(--text-dark); margin-bottom: 0.25rem;
+        }
+        .author-role { color: var(--primary); font-weight: 500; font-size: 0.9rem; margin-bottom: 1rem; }
+        .author-info p { font-size: 0.9rem; color: var(--text); margin-bottom: 0.75rem; }
+        .author-credentials {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+        }
+        .credential {
+            padding: 0.3rem 0.75rem; background: var(--bg-alt);
+            border-radius: 6px; font-size: 0.78rem; color: var(--text-light);
+            font-weight: 500; border: 1px solid var(--border);
+        }
+
+        @media (max-width: 768px) {
+            .author-card { flex-direction: column; text-align: center; }
+            .author-credentials { justify-content: center; }
+        }
+
+        /* ===== RESOURCES CAROUSEL ===== */
+        .resources-carousel {
+            display: flex; gap: 1.5rem; overflow-x: auto;
+            padding: 1rem 0; scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .resources-carousel::-webkit-scrollbar { height: 6px; }
+        .resources-carousel::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        .resource-card {
+            min-width: 300px; max-width: 320px; flex-shrink: 0;
+            background: white; border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.5rem;
+            scroll-snap-align: start; transition: all 0.3s;
+        }
+        .resource-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+        .resource-top {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 1rem;
+        }
+        .resource-emoji { font-size: 2rem; }
+        .resource-publisher {
+            padding: 0.2rem 0.6rem; background: var(--bg-alt);
+            border-radius: 4px; font-size: 0.72rem; font-weight: 600; color: var(--text-light);
+        }
+        .resource-type {
+            display: inline-block; font-size: 0.75rem; color: var(--primary);
+            font-weight: 600; margin-bottom: 0.5rem;
+        }
+        .resource-card h4 {
+            font-weight: 600; color: var(--text-dark); font-size: 1rem;
+            margin-bottom: 0.5rem; line-height: 1.4;
+        }
+        .resource-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
+        .resource-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .resource-link {
+            color: var(--primary); font-weight: 600; font-size: 0.85rem;
+            text-decoration: none; transition: color 0.2s;
+        }
+        .resource-link:hover { color: var(--primary-dark); }
+        .carousel-nav { display: flex; justify-content: center; gap: 1rem; margin-top: 1rem; }
+        .carousel-btn {
+            width: 40px; height: 40px; border-radius: 50%;
+            border: 1px solid var(--border); background: white;
+            cursor: pointer; font-size: 1.1rem; color: var(--text);
+            transition: all 0.2s; display: flex; align-items: center; justify-content: center;
+        }
+        .carousel-btn:hover { background: var(--bg-alt); border-color: var(--primary); color: var(--primary); }
+
+        /* ===== FAQ ===== */
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item {
+            border: 1px solid var(--border); border-radius: var(--radius);
+            margin-bottom: 0.75rem; overflow: hidden; background: white;
+        }
+        .faq-question {
+            width: 100%; padding: 1.25rem 1.5rem;
+            background: none; border: none; cursor: pointer;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.95rem; font-weight: 600; color: var(--text-dark);
+            text-align: left; transition: background 0.2s;
+        }
+        .faq-question:hover { background: var(--bg-alt); }
+        .faq-arrow { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-light); }
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+        .faq-item.open .faq-answer { max-height: 300px; padding-bottom: 1.25rem; }
+        .faq-answer p { font-size: 0.9rem; color: var(--text); }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem; font-weight: 700; color: white; margin-bottom: 1rem;
+        }
+        .cta-section p { color: #94a3b8; margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--secondary); color: #94a3b8; padding: 3rem 2rem 2rem;
+        }
+        .footer-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        footer h4 { color: white; font-weight: 600; margin-bottom: 1rem; font-size: 0.95rem; }
+        footer p { font-size: 0.85rem; line-height: 1.6; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a {
+            color: #94a3b8; text-decoration: none; font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: white; }
+        .footer-bottom {
+            text-align: center; padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ===== GENAI SPECIAL STYLES ===== */
+        .genai-gradient { background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); }
+        .genai-border { border-left: 4px solid var(--genai); }
+        .lecture-card {
+            background: white; border: 1px solid var(--border);
+            border-radius: var(--radius); padding: 1.25rem;
+            transition: all 0.3s; border-left: 4px solid var(--genai);
+        }
+        .lecture-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+        .lecture-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 2rem; height: 2rem; background: var(--genai-light);
+            color: var(--genai-dark); border-radius: 50%;
+            font-size: 0.8rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .lecture-card h5 { font-weight: 600; color: var(--text-dark); margin-bottom: 0.4rem; font-size: 0.95rem; }
+        .lecture-card p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 0.75rem; }
+
+        /* New badge */
+        .new-badge {
+            display: inline-block; padding: 0.15rem 0.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #06b6d4);
+            color: white; border-radius: 4px;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em; vertical-align: middle; margin-left: 0.5rem;
         }
     </style>
 </head>
 <body>
-    <div class="bg-grid"></div>
-    <div class="bg-glow bg-glow-1"></div>
-    <div class="bg-glow bg-glow-2"></div>
-    <nav class="main-nav">
-        <a href="#top" class="logo">QualfyTech</a>
-        <ul class="nav-links">
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#chapters">Curriculum</a></li>
-            <li><a href="#certification">Certification</a></li>
-            <li><a href="#author">Author</a></li>
-            <li><a href="#resources">Resources</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
-        <a href="#certification" class="nav-cta">Get Certified</a>
-    </nav>
-    
-    <!-- Mobile Floating Nav -->
-    <nav class="mobile-nav">
-        <ul class="mobile-nav-links">
-            <li><a href="#programs">📚<span class="nav-label">Programs</span></a></li>
-            <li><a href="#certification">🎓<span class="nav-label">Certify</span></a></li>
-            <li><a href="#author">✍️<span class="nav-label">Author</span></a></li>
-            <li><a href="#resources">📖<span class="nav-label">Books</span></a></li>
-            <li><a href="#faq">❓<span class="nav-label">FAQ</span></a></li>
-        </ul>
-    </nav>
-    
-    <section class="hero" id="top">
-        <div class="hero-main">
-            <div class="hero-badge"><span>🎓</span><span>Professional Certification Programs 2025</span></div>
-            <h1>Master <span>Blockchain Engineering & AI Ethics</span></h1>
-            <p>Comprehensive training and certification based on Springer textbooks. Professional programs in Blockchain Engineering for Healthcare and AI Ethics by Design.</p>
-            <div class="hero-buttons">
-                <a href="#programs" class="cta-btn">Explore Programs</a>
-                <a href="#certification" class="btn-outline">View Certifications</a>
-            </div>
+
+<!-- Navigation -->
+<nav class="nav" id="top">
+    <div class="nav-container">
+        <a href="#top" class="nav-logo">QualfyTech</a>
+        <div class="nav-links">
+            <a href="#programs">Programs</a>
+            <a href="#chapters">Curriculum</a>
+            <a href="#certification">Certification</a>
+            <a href="#author">Author</a>
+            <a href="#resources">Resources</a>
+            <a href="#faq">FAQ</a>
+            <a href="#certification" class="nav-cta">Get Certified</a>
+        </div>
+        <div class="mobile-nav-toggle" onclick="toggleMobileNav()">
+            <div class="hamburger"></div>
+        </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#programs" onclick="toggleMobileNav()">📚 Programs</a>
+        <a href="#certification" onclick="toggleMobileNav()">🎓 Certify</a>
+        <a href="#author" onclick="toggleMobileNav()">✍️ Author</a>
+        <a href="#resources" onclick="toggleMobileNav()">📖 Books</a>
+        <a href="#faq" onclick="toggleMobileNav()">❓ FAQ</a>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-badge">🎓 Professional Certification Programs 2025</div>
+        <h1>Master Blockchain Engineering, AI Ethics & Generative AI</h1>
+        <p>Comprehensive training and certification based on Springer textbooks. Professional programs in Blockchain Engineering, AI Ethics by Design, and Generative AI for All.</p>
+        <div class="hero-buttons">
+            <a href="#programs" class="btn btn-primary">Explore Programs</a>
+            <a href="#certification" class="btn btn-outline">View Certifications</a>
         </div>
         <div class="hero-stats">
-            <div class="stat"><div class="stat-number">34</div><div class="stat-label">Expert Chapters</div></div>
-            <div class="stat"><div class="stat-number">2</div><div class="stat-label">Programs</div></div>
-            <div class="stat"><div class="stat-number">100+</div><div class="stat-label">Case Studies</div></div>
-            <div class="stat"><div class="stat-number">6</div><div class="stat-label">Cert Levels</div></div>
+            <div><div class="hero-stat-number">41</div><div class="hero-stat-label">Expert Chapters</div></div>
+            <div><div class="hero-stat-number">3</div><div class="hero-stat-label">Programs</div></div>
+            <div><div class="hero-stat-number">100+</div><div class="hero-stat-label">Case Studies</div></div>
+            <div><div class="hero-stat-number">9</div><div class="hero-stat-label">Cert Levels</div></div>
         </div>
-    </section>
-    <section class="program-selector" id="programs">
-        <div class="section-header">
-            <h2>Choose Your <span>Program</span></h2>
-            <p>Select a certification program to explore the curriculum, certification levels, and learning path</p>
-        </div>
+    </div>
+</section>
+
+<!-- Programs Section -->
+<section id="programs">
+    <div class="section-container">
+        <h2 class="section-title">Choose Your Program</h2>
+        <p class="section-subtitle">Select a certification program to explore the curriculum, certification levels, and learning path</p>
+
         <div class="program-tabs">
-            <button class="program-tab active" onclick="switchProgram('blockchain')"><span class="tab-icon">⛓️</span><span>Blockchain Engineering</span></button>
-            <button class="program-tab ai-ethics" onclick="switchProgram('ai-ethics')"><span class="tab-icon">🤖</span><span>AI Ethics by Design</span></button>
+            <button class="program-tab active" onclick="switchProgram('blockchain', this)">⛓️ Blockchain Engineering</button>
+            <button class="program-tab" onclick="switchProgram('ethics', this)">🤖 AI Ethics by Design</button>
+            <button class="program-tab" onclick="switchProgram('genai', this)">🧠 Generative AI for All <span class="new-badge">NEW</span></button>
         </div>
-    </section>
-    <!-- BLOCKCHAIN PROGRAM -->
-    <div id="blockchain-content" class="program-content active">
-        <section class="book-section">
-            <div class="book-container">
-                <div class="book-cover">
-                    <div class="book-cover-inner">
-                        <div class="book-icon">⛓️</div>
-                        <div class="book-title-display">Blockchain Engineering</div>
-                        <div class="book-subtitle">Secure, Sustainable Frameworks for Healthcare Applications</div>
-                        <div class="book-meta">
-                            <span>📘 Springer Blockchain Technologies Series</span>
-                            <span>✍️ Prof. Muthu Ramachandran</span>
-                            <span>📅 Published: June 2025</span>
-                            <span>📖 ISBN: 978-981-96-4360-8</span>
+
+        <!-- ===== BLOCKCHAIN PROGRAM ===== -->
+        <div class="program-content active" id="blockchain">
+            <div class="program-header">
+                <div class="emoji">⛓️</div>
+                <h3>Blockchain Engineering</h3>
+                <p>Secure, Sustainable Frameworks for Healthcare Applications</p>
+                <div class="program-meta">
+                    <span>📘 Springer Blockchain Technologies Series</span>
+                    <span>✍️ Prof. Muthu Ramachandran</span>
+                    <span>📅 Published: June 2025</span>
+                    <span>📖 ISBN: 978-981-96-4360-8</span>
+                </div>
+            </div>
+
+            <div class="feature-intro">
+                <h3>Industry-Leading Blockchain Curriculum</h3>
+                <p>Comprehensive certification program built upon the official Springer textbook, providing a rigorous framework for developing secure blockchain applications in healthcare.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card"><div class="icon">🏥</div><h4>Healthcare Focus</h4><p>EHR, clinical trials, and patient data security</p></div>
+                <div class="feature-card"><div class="icon">🔐</div><h4>Security First</h4><p>NIST, ISO 27001, HIPAA, GDPR compliance</p></div>
+                <div class="feature-card"><div class="icon">🤖</div><h4>AI Integration</h4><p>GenAI and blockchain convergence</p></div>
+                <div class="feature-card"><div class="icon">🌱</div><h4>Sustainability</h4><p>Energy-efficient consensus mechanisms</p></div>
+            </div>
+
+            <div class="curriculum-section" id="chapters">
+                <h3>Blockchain Curriculum</h3>
+                <p>17 chapters covering blockchain engineering for healthcare</p>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part I: Foundations</h4><p>Core concepts and technologies</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 01</span>
+                            <h5>Introduction to Blockchain Concepts</h5>
+                            <p>Fundamental principles, decentralization, and cryptographic foundations.</p>
+                            <div class="chapter-tags"><span class="tag">Decentralization</span><span class="tag">Cryptography</span><span class="tag">Consensus</span></div>
+                            <div class="chapter-footer"><span>⏱️ 4 hours</span><a href="#">Start →</a></div>
+                        </div>
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 02</span>
+                            <h5>Core Blockchain Technologies</h5>
+                            <p>Consensus mechanisms, PoW vs PoS, smart contract platforms.</p>
+                            <div class="chapter-tags"><span class="tag">PoW/PoS</span><span class="tag">Ethereum</span><span class="tag">Hyperledger</span></div>
+                            <div class="chapter-footer"><span>⏱️ 5 hours</span><a href="#">Start →</a></div>
+                        </div>
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 03</span>
+                            <h5>ICT in Global Healthcare</h5>
+                            <p>Healthcare IT infrastructure and interoperability challenges.</p>
+                            <div class="chapter-tags"><span class="tag">EHR Systems</span><span class="tag">HL7 FHIR</span><span class="tag">Digital Health</span></div>
+                            <div class="chapter-footer"><span>⏱️ 4 hours</span><a href="#">Start →</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="book-details">
-                    <h2>Industry-Leading Blockchain Curriculum</h2>
-                    <p>Comprehensive certification program built upon the official Springer textbook, providing a rigorous framework for developing secure blockchain applications in healthcare.</p>
-                    <div class="features-grid">
-                        <div class="feature-item"><div class="feature-icon">🏥</div><h4>Healthcare Focus</h4><p>EHR, clinical trials, and patient data security</p></div>
-                        <div class="feature-item"><div class="feature-icon">🔐</div><h4>Security First</h4><p>NIST, ISO 27001, HIPAA, GDPR compliance</p></div>
-                        <div class="feature-item"><div class="feature-icon">🤖</div><h4>AI Integration</h4><p>GenAI and blockchain convergence</p></div>
-                        <div class="feature-item"><div class="feature-icon">🌱</div><h4>Sustainability</h4><p>Energy-efficient consensus mechanisms</p></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="chapters-section" id="chapters">
-            <div class="section-header"><h2>Blockchain <span>Curriculum</span></h2><p>17 chapters covering blockchain engineering for healthcare</p></div>
-            <div class="chapters-grid">
-                <div class="part-header"><h3>Part I: Foundations</h3><p>Core concepts and technologies</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 01</span><h3>Introduction to Blockchain Concepts</h3><p>Fundamental principles, decentralization, and cryptographic foundations.</p><div class="chapter-topics"><span class="topic-tag">Decentralization</span><span class="topic-tag">Cryptography</span><span class="topic-tag">Consensus</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 4 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="chapter-card"><span class="chapter-number">CH 02</span><h3>Core Blockchain Technologies</h3><p>Consensus mechanisms, PoW vs PoS, smart contract platforms.</p><div class="chapter-topics"><span class="topic-tag">PoW/PoS</span><span class="topic-tag">Ethereum</span><span class="topic-tag">Hyperledger</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 5 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="chapter-card"><span class="chapter-number">CH 03</span><h3>ICT in Global Healthcare</h3><p>Healthcare IT infrastructure and interoperability challenges.</p><div class="chapter-topics"><span class="topic-tag">EHR Systems</span><span class="topic-tag">HL7 FHIR</span><span class="topic-tag">Digital Health</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 4 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part II: Healthcare Applications</h3><p>Real-world blockchain implementations</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 04-06</span><h3>Healthcare Blockchain Applications</h3><p>EHR integration, supply chain, and clinical trials management.</p><div class="chapter-topics"><span class="topic-tag">Patient Records</span><span class="topic-tag">Drug Traceability</span><span class="topic-tag">Clinical Trials</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 16 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part III: Security & Privacy</h3><p>Securing blockchain applications</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 07-09</span><h3>Security & Compliance</h3><p>Blockchain security, privacy-preserving technologies, and regulatory compliance.</p><div class="chapter-topics"><span class="topic-tag">Zero-Knowledge</span><span class="topic-tag">HIPAA</span><span class="topic-tag">GDPR</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 16 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part IV: Development</h3><p>Hands-on implementation</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 10-12</span><h3>Smart Contract Development</h3><p>Solidity, Hyperledger Fabric, testing, and quality assurance.</p><div class="chapter-topics"><span class="topic-tag">Solidity</span><span class="topic-tag">Chaincode</span><span class="topic-tag">Testing</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 20 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part V: Advanced Topics</h3><p>AI integration and future developments</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 13-17</span><h3>Advanced & AI Integration</h3><p>Scalability, governance, sustainability, and AI-blockchain convergence.</p><div class="chapter-topics"><span class="topic-tag">Layer 2</span><span class="topic-tag">GenAI</span><span class="topic-tag">Ethics</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 24 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-            </div>
-        </section>
-        <section class="certification-section" id="certification">
-            <div class="section-header"><h2>Blockchain <span>Certification</span></h2><p>Choose your certification level</p></div>
-            <div class="cert-grid">
-                <div class="cert-card"><span class="cert-level">Foundation</span><h3>Associate</h3><div class="cert-price">£499 <span>/ one-time</span></div><ul class="cert-features"><li>Parts I & II (Chapters 1-6)</li><li>Online exam (50 questions)</li><li>Digital certificate</li><li>6-month access</li></ul><a href="#" class="cert-btn secondary">Get Started</a></div>
-                <div class="cert-card featured"><span class="cert-level">Professional</span><h3>Practitioner</h3><div class="cert-price">£999 <span>/ one-time</span></div><ul class="cert-features"><li>All 17 chapters</li><li>Comprehensive exam</li><li>Hands-on labs</li><li>1-year access</li><li>LinkedIn badge</li></ul><a href="#" class="cert-btn primary">Get Certified</a></div>
-                <div class="cert-card"><span class="cert-level">Expert</span><h3>Master</h3><div class="cert-price">£1,999 <span>/ one-time</span></div><ul class="cert-features"><li>Complete curriculum</li><li>Capstone project</li><li>1-on-1 mentorship</li><li>Lifetime access</li></ul><a href="#" class="cert-btn secondary">Apply Now</a></div>
-            </div>
-        </section>
-    </div>
-    <!-- AI ETHICS PROGRAM -->
-    <div id="ai-ethics-content" class="program-content ai-ethics">
-        <section class="book-section">
-            <div class="book-container">
-                <div class="book-cover">
-                    <div class="book-cover-inner">
-                        <div class="book-icon">🤖</div>
-                        <div class="book-title-display">Engineering Ethics of AI by Design</div>
-                        <div class="book-subtitle">Principles, Practices, and Frameworks for Responsible AI</div>
-                        <div class="book-meta">
-                            <span>📚 Springer Engineering Series</span>
-                            <span>✍️ Prof. Muthu Ramachandran</span>
-                            <span>📅 Published: November 2025</span>
-                            <span>📖 ISBN: 978-981-95-2909-4</span>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part II: Healthcare Applications</h4><p>Real-world blockchain implementations</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 04-06</span>
+                            <h5>Healthcare Blockchain Applications</h5>
+                            <p>EHR integration, supply chain, and clinical trials management.</p>
+                            <div class="chapter-tags"><span class="tag">Patient Records</span><span class="tag">Drug Traceability</span><span class="tag">Clinical Trials</span></div>
+                            <div class="chapter-footer"><span>⏱️ 16 hours</span><a href="#">Start →</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="book-details">
-                    <h2>Bridge Theory to Practice in AI Ethics</h2>
-                    <p>Rigorous framework for embedding ethical considerations into every phase of AI system development. Master actionable frameworks and engineering-centric approaches.</p>
-                    <div class="features-grid">
-                        <div class="feature-item"><div class="feature-icon">⚖️</div><h4>Ethics by Design</h4><p>Fairness, transparency, accountability</p></div>
-                        <div class="feature-item"><div class="feature-icon">🌍</div><h4>Global Frameworks</h4><p>EU AI Act, IEEE, NIST, UNESCO</p></div>
-                        <div class="feature-item"><div class="feature-icon">🏥</div><h4>Domain Applications</h4><p>Healthcare AI, autonomous vehicles</p></div>
-                        <div class="feature-item"><div class="feature-icon">🛡️</div><h4>Governance & Testing</h4><p>Bias detection, explainability</p></div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part III: Security & Privacy</h4><p>Securing blockchain applications</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 07-09</span>
+                            <h5>Security & Compliance</h5>
+                            <p>Blockchain security, privacy-preserving technologies, and regulatory compliance.</p>
+                            <div class="chapter-tags"><span class="tag">Zero-Knowledge</span><span class="tag">HIPAA</span><span class="tag">GDPR</span></div>
+                            <div class="chapter-footer"><span>⏱️ 16 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part IV: Development</h4><p>Hands-on implementation</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 10-12</span>
+                            <h5>Smart Contract Development</h5>
+                            <p>Solidity, Hyperledger Fabric, testing, and quality assurance.</p>
+                            <div class="chapter-tags"><span class="tag">Solidity</span><span class="tag">Chaincode</span><span class="tag">Testing</span></div>
+                            <div class="chapter-footer"><span>⏱️ 20 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part V: Advanced Topics</h4><p>AI integration and future developments</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card">
+                            <span class="chapter-num">CH 13-17</span>
+                            <h5>Advanced & AI Integration</h5>
+                            <p>Scalability, governance, sustainability, and AI-blockchain convergence.</p>
+                            <div class="chapter-tags"><span class="tag">Layer 2</span><span class="tag">GenAI</span><span class="tag">Ethics</span></div>
+                            <div class="chapter-footer"><span>⏱️ 24 hours</span><a href="#">Start →</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="chapters-section">
-            <div class="section-header"><h2>AI Ethics <span>Curriculum</span></h2><p>17 chapters covering ethical AI development lifecycle</p></div>
-            <div class="chapters-grid">
-                <div class="part-header"><h3>Part I: Foundations</h3><p>Core principles and frameworks</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 01</span><h3>The Ethics of Artificial Intelligence</h3><p>Transparency, fairness, accountability, privacy, and governance models.</p><div class="chapter-topics"><span class="topic-tag">Transparency</span><span class="topic-tag">Fairness</span><span class="topic-tag">Accountability</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 4 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="chapter-card"><span class="chapter-number">CH 02</span><h3>History and Evolution of AI Ethics</h3><p>From Turing to modern AI governance and responsible AI movements.</p><div class="chapter-topics"><span class="topic-tag">AI History</span><span class="topic-tag">Turing Test</span><span class="topic-tag">Evolution</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 3 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="chapter-card"><span class="chapter-number">CH 03</span><h3>Analysis of Ethical Frameworks</h3><p>EU AI Act, IEEE EAD, NIST, UNESCO, OECD frameworks.</p><div class="chapter-topics"><span class="topic-tag">EU AI Act</span><span class="topic-tag">IEEE</span><span class="topic-tag">NIST</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 5 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part II: Challenges & Case Studies</h3><p>Real-world ethical dilemmas</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 04-05</span><h3>Ethical Challenges & Case Studies</h3><p>Bias, privacy, Amazon hiring, Cambridge Analytica, autonomous vehicles.</p><div class="chapter-topics"><span class="topic-tag">Bias</span><span class="topic-tag">Privacy</span><span class="topic-tag">Deepfakes</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 11 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part III: Ethics by Design</h3><p>Engineering approaches</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 06-09</span><h3>AI Ethics by Design Methodology</h3><p>Requirements engineering, healthcare design, architecture patterns.</p><div class="chapter-topics"><span class="topic-tag">Requirements</span><span class="topic-tag">Healthcare AI</span><span class="topic-tag">Architecture</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 21 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part IV: Development & Governance</h3><p>Implementation and evaluation</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 10-15</span><h3>Development, Testing & Governance</h3><p>Fairlearn, SHAP, MLOps, governance, safety, policy.</p><div class="chapter-topics"><span class="topic-tag">Fairlearn</span><span class="topic-tag">MLOps</span><span class="topic-tag">Governance</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 31 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
-                <div class="part-header"><h3>Part V: Emerging Technologies</h3><p>GenAI and AI Agents</p></div>
-                <div class="chapter-card"><span class="chapter-number">CH 16-17</span><h3>Generative AI & AI Agents</h3><p>GenAI ethics, deepfakes, IP, autonomous agents, LangChain.</p><div class="chapter-topics"><span class="topic-tag">GenAI</span><span class="topic-tag">AI Agents</span><span class="topic-tag">LangChain</span></div><div class="chapter-footer"><span class="chapter-duration">⏱️ 12 hours</span><a href="#" class="chapter-btn">Start →</a></div></div>
+
+            <!-- Blockchain Certification -->
+            <div id="certification">
+                <h3 class="cert-title">Blockchain Certification</h3>
+                <p class="cert-subtitle">Choose your certification level</p>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge foundation">Foundation</div>
+                        <h4>Associate</h4>
+                        <div class="cert-price">£499</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Parts I & II (Chapters 1-6)</li>
+                            <li>Online exam (50 questions)</li>
+                            <li>Digital certificate</li>
+                            <li>6-month access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Get Started</a>
+                    </div>
+                    <div class="cert-card featured">
+                        <div class="cert-badge professional">Professional</div>
+                        <h4>Practitioner</h4>
+                        <div class="cert-price">£999</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>All 17 chapters</li>
+                            <li>Comprehensive exam</li>
+                            <li>Hands-on labs</li>
+                            <li>1-year access</li>
+                            <li>LinkedIn badge</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-primary">Get Certified</a>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge expert">Expert</div>
+                        <h4>Master</h4>
+                        <div class="cert-price">£1,999</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Complete curriculum</li>
+                            <li>Capstone project</li>
+                            <li>1-on-1 mentorship</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Apply Now</a>
+                    </div>
+                </div>
             </div>
-        </section>
-        <section class="certification-section">
-            <div class="section-header"><h2>AI Ethics <span>Certification</span></h2><p>Choose your certification level</p></div>
-            <div class="cert-grid">
-                <div class="cert-card"><span class="cert-level">Foundation</span><h3>Associate</h3><div class="cert-price">£549 <span>/ one-time</span></div><ul class="cert-features"><li>Parts I & II (Chapters 1-5)</li><li>Online exam (50 questions)</li><li>Digital certificate</li><li>6-month access</li></ul><a href="#" class="cert-btn secondary">Get Started</a></div>
-                <div class="cert-card featured"><span class="cert-level">Professional</span><h3>Practitioner</h3><div class="cert-price">£1,199 <span>/ one-time</span></div><ul class="cert-features"><li>All 17 chapters</li><li>Comprehensive exam</li><li>Ethical AI labs</li><li>1-year access</li><li>Capstone project</li></ul><a href="#" class="cert-btn primary">Get Certified</a></div>
-                <div class="cert-card"><span class="cert-level">Expert</span><h3>Master</h3><div class="cert-price">£2,499 <span>/ one-time</span></div><ul class="cert-features"><li>Complete curriculum</li><li>Capstone project</li><li>1-on-1 mentorship</li><li>Lifetime access</li></ul><a href="#" class="cert-btn secondary">Apply Now</a></div>
+        </div>
+
+        <!-- ===== AI ETHICS PROGRAM ===== -->
+        <div class="program-content" id="ethics">
+            <div class="program-header">
+                <div class="emoji">🤖</div>
+                <h3>Engineering Ethics of AI by Design</h3>
+                <p>Principles, Practices, and Frameworks for Responsible AI</p>
+                <div class="program-meta">
+                    <span>📚 Springer Engineering Series</span>
+                    <span>✍️ Prof. Muthu Ramachandran</span>
+                    <span>📅 Published: November 2025</span>
+                    <span>📖 ISBN: 978-981-95-2909-4</span>
+                </div>
             </div>
-        </section>
+
+            <div class="feature-intro">
+                <h3>Bridge Theory to Practice in AI Ethics</h3>
+                <p>Rigorous framework for embedding ethical considerations into every phase of AI system development. Master actionable frameworks and engineering-centric approaches.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card"><div class="icon">⚖️</div><h4>Ethics by Design</h4><p>Fairness, transparency, accountability</p></div>
+                <div class="feature-card"><div class="icon">🌍</div><h4>Global Frameworks</h4><p>EU AI Act, IEEE, NIST, UNESCO</p></div>
+                <div class="feature-card"><div class="icon">🏥</div><h4>Domain Applications</h4><p>Healthcare AI, autonomous vehicles</p></div>
+                <div class="feature-card"><div class="icon">🛡️</div><h4>Governance & Testing</h4><p>Bias detection, explainability</p></div>
+            </div>
+
+            <div class="curriculum-section">
+                <h3>AI Ethics Curriculum</h3>
+                <p>17 chapters covering ethical AI development lifecycle</p>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part I: Foundations</h4><p>Core principles and frameworks</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 01</span><h5>The Ethics of Artificial Intelligence</h5><p>Transparency, fairness, accountability, privacy, and governance models.</p><div class="chapter-tags"><span class="tag">Transparency</span><span class="tag">Fairness</span><span class="tag">Accountability</span></div><div class="chapter-footer"><span>⏱️ 4 hours</span><a href="#">Start →</a></div></div>
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 02</span><h5>History and Evolution of AI Ethics</h5><p>From Turing to modern AI governance and responsible AI movements.</p><div class="chapter-tags"><span class="tag">AI History</span><span class="tag">Turing Test</span><span class="tag">Evolution</span></div><div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div></div>
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 03</span><h5>Analysis of Ethical Frameworks</h5><p>EU AI Act, IEEE EAD, NIST, UNESCO, OECD frameworks.</p><div class="chapter-tags"><span class="tag">EU AI Act</span><span class="tag">IEEE</span><span class="tag">NIST</span></div><div class="chapter-footer"><span>⏱️ 5 hours</span><a href="#">Start →</a></div></div>
+                    </div>
+                </div>
+                <div class="part-group">
+                    <div class="part-header"><h4>Part II: Challenges & Case Studies</h4><p>Real-world ethical dilemmas</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 04-05</span><h5>Ethical Challenges & Case Studies</h5><p>Bias, privacy, Amazon hiring, Cambridge Analytica, autonomous vehicles.</p><div class="chapter-tags"><span class="tag">Bias</span><span class="tag">Privacy</span><span class="tag">Deepfakes</span></div><div class="chapter-footer"><span>⏱️ 11 hours</span><a href="#">Start →</a></div></div>
+                    </div>
+                </div>
+                <div class="part-group">
+                    <div class="part-header"><h4>Part III: Ethics by Design</h4><p>Engineering approaches</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 06-09</span><h5>AI Ethics by Design Methodology</h5><p>Requirements engineering, healthcare design, architecture patterns.</p><div class="chapter-tags"><span class="tag">Requirements</span><span class="tag">Healthcare AI</span><span class="tag">Architecture</span></div><div class="chapter-footer"><span>⏱️ 21 hours</span><a href="#">Start →</a></div></div>
+                    </div>
+                </div>
+                <div class="part-group">
+                    <div class="part-header"><h4>Part IV: Development & Governance</h4><p>Implementation and evaluation</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 10-15</span><h5>Development, Testing & Governance</h5><p>Fairlearn, SHAP, MLOps, governance, safety, policy.</p><div class="chapter-tags"><span class="tag">Fairlearn</span><span class="tag">MLOps</span><span class="tag">Governance</span></div><div class="chapter-footer"><span>⏱️ 31 hours</span><a href="#">Start →</a></div></div>
+                    </div>
+                </div>
+                <div class="part-group">
+                    <div class="part-header"><h4>Part V: Emerging Technologies</h4><p>GenAI and AI Agents</p></div>
+                    <div class="chapter-cards">
+                        <div class="chapter-card"><span class="chapter-num ethics">CH 16-17</span><h5>Generative AI & AI Agents</h5><p>GenAI ethics, deepfakes, IP, autonomous agents, LangChain.</p><div class="chapter-tags"><span class="tag">GenAI</span><span class="tag">AI Agents</span><span class="tag">LangChain</span></div><div class="chapter-footer"><span>⏱️ 12 hours</span><a href="#">Start →</a></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Ethics Certification -->
+            <div>
+                <h3 class="cert-title">AI Ethics Certification</h3>
+                <p class="cert-subtitle">Choose your certification level</p>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge foundation">Foundation</div>
+                        <h4>Associate</h4>
+                        <div class="cert-price">£549</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Parts I & II (Chapters 1-5)</li>
+                            <li>Online exam (50 questions)</li>
+                            <li>Digital certificate</li>
+                            <li>6-month access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Get Started</a>
+                    </div>
+                    <div class="cert-card featured-ethics">
+                        <div class="cert-badge professional">Professional</div>
+                        <h4>Practitioner</h4>
+                        <div class="cert-price">£1,199</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>All 17 chapters</li>
+                            <li>Comprehensive exam</li>
+                            <li>Ethical AI labs</li>
+                            <li>1-year access</li>
+                            <li>Capstone project</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-primary">Get Certified</a>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge expert">Expert</div>
+                        <h4>Master</h4>
+                        <div class="cert-price">£2,499</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Complete curriculum</li>
+                            <li>Capstone project</li>
+                            <li>1-on-1 mentorship</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== GENERATIVE AI FOR ALL PROGRAM (NEW) ===== -->
+        <div class="program-content" id="genai">
+            <div class="program-header" style="background: linear-gradient(135deg, #faf5ff 0%, #f0f9ff 100%); border-color: #e9d5ff;">
+                <div class="emoji">🧠</div>
+                <h3>Generative AI for All</h3>
+                <p>A Practical 7-Lecture Course for Everyone — No Technical Prerequisites</p>
+                <div class="program-meta">
+                    <span>🚀 Hands-On Lab Exercises</span>
+                    <span>✍️ Prof. Muthu Ramachandran</span>
+                    <span>📅 Launching: 2026</span>
+                    <span>🎯 Portfolio-Based Assessment</span>
+                </div>
+            </div>
+
+            <div class="feature-intro">
+                <h3>Master Generative AI — From Fundamentals to Strategy</h3>
+                <p>Whether you're a business professional, educator, student, or simply curious about the technology transforming our world — this course is designed for you.</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card"><div class="icon">💡</div><h4>No Prerequisites</h4><p>Just curiosity and a willingness to learn</p></div>
+                <div class="feature-card"><div class="icon">🔧</div><h4>Hands-On Labs</h4><p>Practical exercises in every lecture</p></div>
+                <div class="feature-card"><div class="icon">🏢</div><h4>Business Ready</h4><p>Real-world use cases and strategy</p></div>
+                <div class="feature-card"><div class="icon">⚖️</div><h4>Responsible AI</h4><p>Ethics, risks, and governance built-in</p></div>
+            </div>
+
+            <div class="curriculum-section">
+                <h3>Course Curriculum</h3>
+                <p>7 lectures combining theory with practical, hands-on exercises</p>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part I: Foundations</h4><p>Understanding Generative AI and how to communicate with it</p></div>
+                    <div class="chapter-cards">
+                        <div class="lecture-card">
+                            <div class="lecture-num">1</div>
+                            <h5>Introduction to Generative AI</h5>
+                            <p>What is Gen AI, how does it work, and why does it matter now? Explore the AI taxonomy, transformer architecture, and key milestones from GPT to Claude.</p>
+                            <div class="chapter-tags"><span class="tag">AI Taxonomy</span><span class="tag">Transformers</span><span class="tag">LLMs</span><span class="tag">Industry Trends</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                        <div class="lecture-card">
+                            <div class="lecture-num">2</div>
+                            <h5>Large Language Models & Prompt Engineering</h5>
+                            <p>Understanding ChatGPT, Claude, Gemini and the art of effective prompting. Master chain-of-thought, few-shot, and system prompt techniques.</p>
+                            <div class="chapter-tags"><span class="tag">Prompt Engineering</span><span class="tag">Chain-of-Thought</span><span class="tag">Few-Shot</span><span class="tag">Parameters</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part II: Practical Applications</h4><p>Creating content across text, code, images, audio, and video</p></div>
+                    <div class="chapter-cards">
+                        <div class="lecture-card">
+                            <div class="lecture-num">3</div>
+                            <h5>Gen AI for Text, Code & Content Creation</h5>
+                            <p>Hands-on applications in professional writing, code generation, debugging, documentation, summarisation, and translation.</p>
+                            <div class="chapter-tags"><span class="tag">Writing</span><span class="tag">Code Generation</span><span class="tag">Content Workflows</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                        <div class="lecture-card">
+                            <div class="lecture-num">4</div>
+                            <h5>Gen AI for Images, Audio & Video</h5>
+                            <p>Exploring DALL·E, Midjourney, Sora, and multimodal AI capabilities. Image prompting, voice synthesis, music generation, and deepfake detection.</p>
+                            <div class="chapter-tags"><span class="tag">Image Gen</span><span class="tag">Audio AI</span><span class="tag">Video Gen</span><span class="tag">Multimodal</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part III: Business & Ethics</h4><p>Strategic adoption, governance, and responsible use</p></div>
+                    <div class="chapter-cards">
+                        <div class="lecture-card">
+                            <div class="lecture-num">5</div>
+                            <h5>Gen AI in Business & the Workplace</h5>
+                            <p>Real-world use cases across healthcare, cybersecurity, education, finance, and more. Building business cases and AI-augmented workflows.</p>
+                            <div class="chapter-tags"><span class="tag">Use Cases</span><span class="tag">ROI</span><span class="tag">Change Management</span><span class="tag">Enterprise AI</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                        <div class="lecture-card">
+                            <div class="lecture-num">6</div>
+                            <h5>Ethics, Risks & Responsible AI</h5>
+                            <p>Addressing bias, hallucinations, copyright, privacy, and governance frameworks. FATE principles, EU AI Act, and practical risk mitigation.</p>
+                            <div class="chapter-tags"><span class="tag">FATE</span><span class="tag">Bias</span><span class="tag">GDPR</span><span class="tag">EU AI Act</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="part-group">
+                    <div class="part-header"><h4>Part IV: Strategy & Future</h4><p>Building your personal and organisational AI roadmap</p></div>
+                    <div class="chapter-cards">
+                        <div class="lecture-card">
+                            <div class="lecture-num">7</div>
+                            <h5>The Future of Gen AI & Your AI Strategy</h5>
+                            <p>Agentic AI, multi-modal reasoning, and the path to AGI. Build your personal AI roadmap and organisational adoption strategy.</p>
+                            <div class="chapter-tags"><span class="tag">Agentic AI</span><span class="tag">AI Strategy</span><span class="tag">Future of Work</span><span class="tag">Capstone</span></div>
+                            <div class="chapter-footer"><span>⏱️ 3 hours</span><a href="#">Start →</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gen AI Certification -->
+            <div>
+                <h3 class="cert-title">Generative AI Certification</h3>
+                <p class="cert-subtitle">Choose your certification level</p>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-badge foundation">Foundation</div>
+                        <h4>Associate</h4>
+                        <div class="cert-price">£399</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Lectures 1-4 (Foundations & Applications)</li>
+                            <li>Online exam (40 questions)</li>
+                            <li>Digital certificate</li>
+                            <li>6-month access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Get Started</a>
+                    </div>
+                    <div class="cert-card featured-genai">
+                        <div class="cert-badge professional">Professional</div>
+                        <h4>Practitioner</h4>
+                        <div class="cert-price">£799</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>All 7 lectures</li>
+                            <li>Comprehensive exam</li>
+                            <li>Hands-on lab portfolio</li>
+                            <li>1-year access</li>
+                            <li>LinkedIn badge</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-genai">Get Certified</a>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-badge expert">Expert</div>
+                        <h4>Master</h4>
+                        <div class="cert-price">£1,499</div>
+                        <div class="cert-price-note">/ one-time</div>
+                        <ul class="cert-features">
+                            <li>Complete curriculum + capstone</li>
+                            <li>AI strategy project</li>
+                            <li>1-on-1 mentorship</li>
+                            <li>Lifetime access</li>
+                        </ul>
+                        <a href="#" class="cert-btn cert-btn-outline">Apply Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <!-- Author Section -->
-    <section class="author-section" id="author">
-        <div class="author-container">
-            <div class="author-image"><img src="author-image.png" alt="Prof. Muthu Ramachandran" class="author-photo"></div>
+</section>
+
+<!-- Author Section -->
+<section id="author">
+    <div class="section-container">
+        <div class="author-card">
+            <img src="author-image.png" alt="Prof. Muthu Ramachandran" class="author-image">
             <div class="author-info">
                 <h3>Prof. Muthu Ramachandran</h3>
-                <div class="author-title">Cybersecurity, AI & Blockchain Research Consultant | IASME CE Certified</div>
+                <div class="author-role">Cybersecurity, AI & Blockchain Research Consultant | IASME CE Certified</div>
                 <p>With over 30 years of academic and industry experience, Prof. Ramachandran brings unparalleled expertise. Currently Research Consultant at Forti5 Technologies (UK) and Professor Extraordinarius at UNISA, with previous positions at IIT Dhanbad, University of Southampton, and Leeds Beckett University.</p>
                 <p>Author of 9+ Springer books including "Blockchain Engineering" and "Engineering Ethics of AI by Design". Published over 200 conference papers and 100+ journal articles.</p>
                 <div class="author-credentials">
@@ -555,313 +1035,188 @@
                 </div>
             </div>
         </div>
-    </section>
-    
-    <!-- Resources Section -->
-    <section class="resources-section" id="resources">
-        <div class="section-header">
-            <h2>Books & <span>Learning Resources</span></h2>
-            <p>Explore the official Springer textbooks and online courses that power our certification programs</p>
-        </div>
-        <div class="resources-carousel-wrapper">
-            <button class="scroll-indicator left hidden" id="scrollLeft" onclick="scrollCarousel(-1)" aria-label="Previous">←</button>
-            <div class="resources-carousel-container">
-                <div class="resources-carousel" id="resourcesCarousel">
-                <!-- Book 1: AI Ethics -->
-                <div class="resource-card">
-                    <div class="resource-card-image">
-                        <span class="book-icon-large">📘</span>
-                        <span class="resource-badge springer">Springer</span>
-                    </div>
-                    <div class="resource-card-content">
-                        <span class="resource-type">📚 Textbook</span>
-                        <h3>Engineering Ethics of AI by Design</h3>
-                        <p>A comprehensive guide bridging theoretical ethical principles and practical engineering practices. Learn actionable frameworks for embedding ethics into the AI development lifecycle.</p>
-                        <div class="resource-meta">
-                            <span>17 Chapters</span>
-                            <span>2026</span>
-                            <span>Springer Singapore</span>
-                        </div>
-                        <a href="https://link.springer.com/book/10.1007/978-981-95-2909-4" target="_blank" class="resource-btn springer-btn">View on Springer →</a>
-                    </div>
-                </div>
-                
-                <!-- Book 2: Blockchain Engineering -->
-                <div class="resource-card">
-                    <div class="resource-card-image">
-                        <span class="book-icon-large">📗</span>
-                        <span class="resource-badge springer">Springer</span>
-                    </div>
-                    <div class="resource-card-content">
-                        <span class="resource-type">📚 Textbook</span>
-                        <h3>Blockchain Engineering: Secure, Sustainable Frameworks for Healthcare</h3>
-                        <p>Master blockchain technology for healthcare applications. Covers security frameworks, smart contracts, Hyperledger Fabric, and regulatory compliance including HIPAA and GDPR.</p>
-                        <div class="resource-meta">
-                            <span>17 Chapters</span>
-                            <span>2025</span>
-                            <span>Springer Singapore</span>
-                        </div>
-                        <a href="https://link.springer.com/book/10.1007/978-981-96-4360-8" target="_blank" class="resource-btn springer-btn">View on Springer →</a>
-                    </div>
-                </div>
-                
-                <!-- Udemy Course -->
-                <div class="resource-card udemy">
-                    <div class="resource-card-image">
-                        <span class="book-icon-large">🎓</span>
-                        <span class="resource-badge udemy">Udemy</span>
-                    </div>
-                    <div class="resource-card-content">
-                        <span class="resource-type">🎬 Online Course</span>
-                        <h3>AI Ethics by Design</h3>
-                        <p>Video course by Prof. Muthu Ramachandran covering AI ethics integration at the design phase. Includes video lectures and MCQs to test your understanding of ethical AI development.</p>
-                        <div class="resource-meta">
-                            <span>Video Lectures</span>
-                            <span>MCQ Tests</span>
-                            <span>Certificate</span>
-                        </div>
-                        <a href="https://www.udemy.com/course/ai-ethics-by-design/?referralCode=CA5844321CFB80FDF6F1&couponCode=CM251225G1" target="_blank" class="resource-btn udemy-btn">Enroll on Udemy →</a>
-                    </div>
-                </div>
-                
-                <!-- Coming Soon Placeholder -->
-                <div class="resource-card">
-                    <div class="resource-card-image">
-                        <span class="book-icon-large">📖</span>
-                        <span class="resource-badge coming-soon">Coming Soon</span>
-                    </div>
-                    <div class="resource-card-content">
-                        <span class="resource-type">📚 Textbook</span>
-                        <h3>More Resources Coming Soon</h3>
-                        <p>Prof. Ramachandran has additional books and courses in development. Stay tuned for more comprehensive learning resources on AI, blockchain, and cybersecurity.</p>
-                        <div class="resource-meta">
-                            <span>In Development</span>
-                            <span>2025-2026</span>
-                        </div>
-                        <span class="resource-btn coming-soon-btn">Coming Soon</span>
-                    </div>
-                </div>
-                </div>
+    </div>
+</section>
+
+<!-- Resources Section -->
+<section id="resources">
+    <div class="section-container">
+        <h2 class="section-title">Books & Learning Resources</h2>
+        <p class="section-subtitle">Explore the official Springer textbooks and online courses that power our certification programs</p>
+
+        <div class="resources-carousel" id="resourcesCarousel">
+            <div class="resource-card">
+                <div class="resource-top"><span class="resource-emoji">📘</span><span class="resource-publisher">Springer</span></div>
+                <div class="resource-type">📚 Textbook</div>
+                <h4>Engineering Ethics of AI by Design</h4>
+                <p>A comprehensive guide bridging theoretical ethical principles and practical engineering practices.</p>
+                <div class="resource-tags"><span class="tag">17 Chapters</span><span class="tag">2026</span><span class="tag">Springer Singapore</span></div>
+                <a href="https://link.springer.com/book/10.1007/978-981-95-2909-4" class="resource-link">View on Springer →</a>
             </div>
+            <div class="resource-card">
+                <div class="resource-top"><span class="resource-emoji">📗</span><span class="resource-publisher">Springer</span></div>
+                <div class="resource-type">📚 Textbook</div>
+                <h4>Blockchain Engineering: Secure, Sustainable Frameworks for Healthcare</h4>
+                <p>Master blockchain technology for healthcare applications.</p>
+                <div class="resource-tags"><span class="tag">17 Chapters</span><span class="tag">2025</span><span class="tag">Springer Singapore</span></div>
+                <a href="https://link.springer.com/book/10.1007/978-981-96-4360-8" class="resource-link">View on Springer →</a>
             </div>
-            <button class="scroll-indicator right" id="scrollRight" onclick="scrollCarousel(1)" aria-label="Next">→</button>
-            <div class="carousel-dots" id="carouselDots"></div>
+            <div class="resource-card">
+                <div class="resource-top"><span class="resource-emoji">🎓</span><span class="resource-publisher">Udemy</span></div>
+                <div class="resource-type">🎬 Online Course</div>
+                <h4>AI Ethics by Design</h4>
+                <p>Video course covering AI ethics integration at the design phase. Includes video lectures and MCQs.</p>
+                <div class="resource-tags"><span class="tag">Video Lectures</span><span class="tag">MCQ Tests</span><span class="tag">Certificate</span></div>
+                <a href="https://www.udemy.com/course/ai-ethics-by-design/?referralCode=CA5844321CFB80FDF6F1&couponCode=CM251225G1" class="resource-link">Enroll on Udemy →</a>
+            </div>
+            <div class="resource-card" style="border-left: 3px solid var(--genai);">
+                <div class="resource-top"><span class="resource-emoji">🧠</span><span class="resource-publisher" style="background: var(--genai-light); color: var(--genai-dark);">NEW</span></div>
+                <div class="resource-type" style="color: var(--genai);">🚀 Professional Course</div>
+                <h4>Generative AI for All</h4>
+                <p>7-lecture hands-on course making Gen AI accessible to everyone. No technical prerequisites required.</p>
+                <div class="resource-tags"><span class="tag">7 Lectures</span><span class="tag">Labs</span><span class="tag">Portfolio</span><span class="tag">2026</span></div>
+                <a href="#programs" class="resource-link" style="color: var(--genai);">Explore Program →</a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-top"><span class="resource-emoji">📖</span><span class="resource-publisher">Coming Soon</span></div>
+                <div class="resource-type">📚 Textbook</div>
+                <h4>More Resources Coming Soon</h4>
+                <p>Additional books and courses in development on AI, blockchain, and cybersecurity.</p>
+                <div class="resource-tags"><span class="tag">In Development</span><span class="tag">2025-2026</span></div>
+                <span class="resource-link" style="cursor: default;">Coming Soon</span>
+            </div>
         </div>
-    </section>
-    
-    <!-- FAQ Section -->
-    <section class="faq-section" id="faq">
-        <div class="section-header"><h2>Frequently Asked <span>Questions</span></h2><p>Everything you need to know about our certification programs</p></div>
-        <div class="faq-container">
-            <div class="faq-item"><button class="faq-question">What prerequisites are required?</button><div class="faq-answer"><p>Foundation level requires basic software development understanding. For Blockchain, familiarity with programming and databases is recommended. For AI Ethics, Python and basic ML concepts are helpful. Master levels are for professionals with 2+ years experience.</p></div></div>
-            <div class="faq-item"><button class="faq-question">How long does certification take?</button><div class="faq-answer"><p>Foundation: 4-6 weeks (10-15 hours/week). Practitioner: 10-14 weeks. Master: 16-20 weeks including capstone project and mentorship.</p></div></div>
-            <div class="faq-item"><button class="faq-question">Are certifications industry recognized?</button><div class="faq-answer"><p>Yes, based on official Springer textbooks covering NIST, ISO 27001, HIPAA, GDPR, EU AI Act, and IEEE frameworks—highly relevant for technology, healthcare, and regulatory roles.</p></div></div>
-            <div class="faq-item"><button class="faq-question">Can I take both programs?</button><div class="faq-answer"><p>Yes! Many professionals pursue both—especially for healthcare AI or technology governance roles. We offer 20% discount when enrolling in both programs simultaneously.</p></div></div>
-            <div class="faq-item"><button class="faq-question">Do you offer corporate training?</button><div class="faq-answer"><p>Yes, customized corporate training for teams of 5+. Includes dedicated support, custom scheduling, progress tracking, and on-site workshop options. Contact us for enterprise pricing.</p></div></div>
+        <div class="carousel-nav">
+            <button class="carousel-btn" onclick="scrollCarousel(-1)">←</button>
+            <button class="carousel-btn" onclick="scrollCarousel(1)">→</button>
         </div>
-    </section>
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Advance Your Career?</h2>
-            <p>Join professionals worldwide mastering blockchain engineering and AI ethics. Build secure, ethical systems that transform healthcare and technology.</p>
-            <div class="hero-buttons"><a href="#programs" class="cta-btn">Explore Programs</a><a href="#certification" class="btn-outline">View Certifications</a></div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section id="faq" style="background: var(--bg-alt);">
+    <div class="section-container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about our certification programs</p>
+
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What prerequisites are required?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>For the <strong>Generative AI for All</strong> course, no technical prerequisites are needed — just curiosity and basic computer literacy. For Blockchain, familiarity with programming and databases is recommended. For AI Ethics, Python and basic ML concepts are helpful. Master levels are for professionals with 2+ years experience.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">How long does certification take?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>Gen AI for All: Foundation 3-4 weeks, Practitioner 6-8 weeks, Master 10-12 weeks. Blockchain & AI Ethics: Foundation 4-6 weeks (10-15 hours/week), Practitioner 10-14 weeks, Master 16-20 weeks including capstone project and mentorship.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Are certifications industry recognized?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>Yes, based on official Springer textbooks and professional curricula covering NIST, ISO 27001, HIPAA, GDPR, EU AI Act, and IEEE frameworks — highly relevant for technology, healthcare, and regulatory roles.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Can I take multiple programs?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>Yes! Many professionals pursue multiple programs — especially for healthcare AI or technology governance roles. We offer 20% discount when enrolling in two or more programs simultaneously.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">What makes the Gen AI for All course different?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>Unlike our Springer textbook-based programs, Gen AI for All is designed as an accessible, hands-on course for everyone — no coding or AI background needed. Each of the 7 lectures includes practical lab exercises, and assessment is portfolio-based so you build real skills from day one.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-question" onclick="toggleFaq(this)">Do you offer corporate training?<span class="faq-arrow">▼</span></button>
+                <div class="faq-answer"><p>Yes, customized corporate training for teams of 5+. Includes dedicated support, custom scheduling, progress tracking, and on-site workshop options. The Gen AI for All course is particularly popular for organisation-wide AI literacy programmes. Contact us for enterprise pricing.</p></div>
+            </div>
         </div>
-    </section>
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-brand"><h4>QualfyTech</h4><p>Professional certification programs based on Springer textbooks. Empowering professionals with cutting-edge skills in blockchain engineering and AI ethics.</p></div>
-            <div class="footer-links"><h5>Programs</h5><ul><li><a href="#programs">Blockchain Engineering</a></li><li><a href="#programs">AI Ethics by Design</a></li><li><a href="#certification">Certifications</a></li></ul></div>
-            <div class="footer-links"><h5>Resources</h5><ul><li><a href="https://link.springer.com/book/10.1007/978-981-96-4360-8">Blockchain Book</a></li><li><a href="https://link.springer.com/book/10.1007/978-981-95-2909-4">AI Ethics Book</a></li></ul></div>
-            <div class="footer-links"><h5>Support</h5><ul><li><a href="#faq">FAQ</a></li><li><a href="#">Contact Us</a></li><li><a href="#">Privacy Policy</a></li></ul></div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="section-container">
+        <h2>Ready to Advance Your Career?</h2>
+        <p>Join professionals worldwide mastering blockchain engineering, AI ethics, and generative AI. Build secure, ethical systems that transform healthcare and technology.</p>
+        <div class="cta-buttons">
+            <a href="#programs" class="btn btn-primary">Explore Programs</a>
+            <a href="#certification" class="btn btn-outline">View Certifications</a>
         </div>
-        <div class="footer-bottom"><p>© 2025 QualfyTech. Based on Springer textbooks by Prof. Muthu Ramachandran.</p><p>Blockchain & AI Ethics Certification Programs</p></div>
-    </footer>
-    <script>
-        function switchProgram(program) {
-            document.querySelectorAll('.program-tab').forEach(tab => tab.classList.remove('active'));
-            event.target.closest('.program-tab').classList.add('active');
-            document.querySelectorAll('.program-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(program + '-content').classList.add('active');
-            document.getElementById(program + '-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-        document.querySelectorAll('.faq-question').forEach(button => {
-            button.addEventListener('click', () => {
-                const faqItem = button.parentElement;
-                const isActive = faqItem.classList.contains('active');
-                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
-                if (!isActive) faqItem.classList.add('active');
-            });
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>QualfyTech</h4>
+            <p>Professional certification programs based on Springer textbooks. Empowering professionals with cutting-edge skills in blockchain engineering, AI ethics, and generative AI.</p>
+        </div>
+        <div>
+            <h4>Programs</h4>
+            <ul class="footer-links">
+                <li><a href="#programs">Blockchain Engineering</a></li>
+                <li><a href="#programs">AI Ethics by Design</a></li>
+                <li><a href="#programs">Generative AI for All</a></li>
+                <li><a href="#certification">Certifications</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Resources</h4>
+            <ul class="footer-links">
+                <li><a href="https://link.springer.com/book/10.1007/978-981-96-4360-8">Blockchain Book</a></li>
+                <li><a href="https://link.springer.com/book/10.1007/978-981-95-2909-4">AI Ethics Book</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4>Support</h4>
+            <ul class="footer-links">
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 QualfyTech. Based on Springer textbooks by Prof. Muthu Ramachandran.</p>
+    </div>
+</footer>
+
+<script>
+    // Mobile Nav
+    function toggleMobileNav() {
+        document.getElementById('mobileNav').classList.toggle('active');
+    }
+
+    // Program Tabs
+    function switchProgram(program, btn) {
+        document.querySelectorAll('.program-content').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.program-tab').forEach(t => {
+            t.classList.remove('active', 'active-ethics', 'active-genai');
         });
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
-        
-        // Scroll spy for navigation highlighting - FIXED
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a, .mobile-nav-links a');
-        
-        function updateActiveNav() {
-            const scrollPosition = window.scrollY + 200;
-            
-            let currentSection = null;
-            let smallestDistance = Infinity;
-            
-            // Find the section that is currently most in view
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionBottom = sectionTop + sectionHeight;
-                const sectionId = section.getAttribute('id');
-                
-                // Check if we're within this section
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    // Calculate how close we are to the top of this section
-                    const distance = Math.abs(scrollPosition - sectionTop);
-                    if (distance < smallestDistance) {
-                        smallestDistance = distance;
-                        currentSection = sectionId;
-                    }
-                }
-            });
-            
-            // If no section found (at very top), default to null
-            if (window.scrollY < 100) {
-                currentSection = null;
-            }
-            
-            // Remove all active classes first
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Only highlight ONE section - the current one
-            if (currentSection) {
-                navLinks.forEach(link => {
-                    const href = link.getAttribute('href');
-                    if (href === '#' + currentSection) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
-        
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.main-nav');
-            nav.style.background = window.scrollY > 50 ? 'rgba(10,10,10,0.95)' : 'rgba(10,10,10,0.8)';
-            
-            // Update active nav on scroll
-            updateActiveNav();
-        });
-        
-        // Initial call to set active state on page load
-        updateActiveNav();
-        
-        // Resources Carousel functionality - IMPROVED
+        document.getElementById(program).classList.add('active');
+        if (program === 'ethics') btn.classList.add('active-ethics');
+        else if (program === 'genai') btn.classList.add('active-genai');
+        else btn.classList.add('active');
+    }
+
+    // FAQ
+    function toggleFaq(btn) {
+        const item = btn.parentElement;
+        item.classList.toggle('open');
+    }
+
+    // Carousel
+    function scrollCarousel(dir) {
         const carousel = document.getElementById('resourcesCarousel');
-        const dotsContainer = document.getElementById('carouselDots');
-        const scrollLeftBtn = document.getElementById('scrollLeft');
-        const scrollRightBtn = document.getElementById('scrollRight');
-        const cards = carousel.querySelectorAll('.resource-card');
-        let currentIndex = 0;
-        
-        // Calculate how many cards are visible
-        function getVisibleCards() {
-            const containerWidth = carousel.parentElement.offsetWidth;
-            const cardWidth = cards[0].offsetWidth;
-            const gap = 32; // 2rem gap
-            return Math.floor((containerWidth + gap) / (cardWidth + gap));
+        carousel.scrollBy({ left: dir * 340, behavior: 'smooth' });
+    }
+
+    // Scroll effects
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('.nav');
+        if (window.scrollY > 50) {
+            nav.style.boxShadow = 'var(--shadow-md)';
+        } else {
+            nav.style.boxShadow = 'none';
         }
-        
-        // Create dots
-        cards.forEach((_, index) => {
-            const dot = document.createElement('button');
-            dot.classList.add('carousel-dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => scrollToCard(index));
-            dotsContainer.appendChild(dot);
-        });
-        
-        function updateScrollIndicators() {
-            const maxScroll = carousel.scrollWidth - carousel.clientWidth;
-            const currentScroll = carousel.scrollLeft;
-            
-            // Show/hide left arrow
-            if (currentScroll <= 10) {
-                scrollLeftBtn.classList.add('hidden');
-            } else {
-                scrollLeftBtn.classList.remove('hidden');
-            }
-            
-            // Show/hide right arrow
-            if (currentScroll >= maxScroll - 10) {
-                scrollRightBtn.classList.add('hidden');
-            } else {
-                scrollRightBtn.classList.remove('hidden');
-            }
-        }
-        
-        function scrollCarousel(direction) {
-            const cardWidth = cards[0].offsetWidth + 32; // card width + gap
-            const visibleCards = getVisibleCards();
-            const maxIndex = Math.max(0, cards.length - visibleCards);
-            
-            currentIndex = Math.max(0, Math.min(maxIndex, currentIndex + direction));
-            carousel.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                updateDots();
-                updateScrollIndicators();
-            }, 350);
-        }
-        
-        function scrollToCard(index) {
-            const cardWidth = cards[0].offsetWidth + 32;
-            const visibleCards = getVisibleCards();
-            const maxIndex = Math.max(0, cards.length - visibleCards);
-            
-            currentIndex = Math.min(index, maxIndex);
-            carousel.scrollTo({ left: currentIndex * cardWidth, behavior: 'smooth' });
-            
-            setTimeout(() => {
-                updateDots();
-                updateScrollIndicators();
-            }, 350);
-        }
-        
-        function updateDots() {
-            const dots = dotsContainer.querySelectorAll('.carousel-dot');
-            const cardWidth = cards[0].offsetWidth + 32;
-            const currentScrollIndex = Math.round(carousel.scrollLeft / cardWidth);
-            
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentScrollIndex);
-            });
-        }
-        
-        // Update on scroll
-        carousel.addEventListener('scroll', () => {
-            const cardWidth = cards[0].offsetWidth + 32;
-            const newIndex = Math.round(carousel.scrollLeft / cardWidth);
-            if (newIndex !== currentIndex) {
-                currentIndex = newIndex;
-                updateDots();
-            }
-            updateScrollIndicators();
-        });
-        
-        // Initial state
-        updateScrollIndicators();
-        
-        // Update on resize
-        window.addEventListener('resize', () => {
-            updateScrollIndicators();
-        });
-    </script>
+    });
+</script>
+
 </body>
 </html>
